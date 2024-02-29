@@ -1,0 +1,36 @@
+*.bc
+.*.o
+/.*.dot
+/*.dot
+*.o
+/.config
+/build
+/.clangd
+/.cache
+/artifacts
+/compile_commands.json
+config.cmake
+.config
+# Don't commit the compiled benchmarks
+/bench
+# Some stuff for NAS
+npbparams.h
+test/npb/sys/setparams
+
+/html
+/a.out*
+tools/.ipynb_checkpoints
+.venv
+# where stuff gets installed to
+/local
+
+/musl
+
+/test/SPEC2017/SPEC2017
+/test/SPEC2017/benchmarks
+/test/SPEC2017/bitcodes
+test/npb/MG/penmp
+
+# /runtime/include/alaska/autoconf.h
+.vscode
+.ipynb_checkpoints

@@ -1,0 +1,21 @@
+opt
+build
+bench
+redis/bin
+memcached/bin
+memcached/src
+results
+docker-results
+venv
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+.ipynb_checkpoints
+
+*.o
+*.bc.o
+*.o.bc

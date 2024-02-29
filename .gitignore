@@ -1,0 +1,19 @@
+/opt
+/build
+/bench
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+.ipynb_checkpoints
+
+*.o
+*.bc.o
+*.o.bc
+/results
+/memcached/libevent/config.log
+/redis/mesh
+/rss.trace

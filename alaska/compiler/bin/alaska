@@ -1,0 +1,127 @@
+#!/usr/bin/bash
+
+# set -e
+# set -x
+
+PFX=$(realpath "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/../")
+
+export PATH=$PFX/bin:$PATH
+export LD_LIBRARY_PATH=$PFX/lib:$LD_LIBRARY_PATH:/lib64:/lib
+
+OUTFILE="a.out"
+KEEP="false"
+BASELINE="false"
+COLLECT_CLANG_ARGS=() INPUTS=() OPT_ARGS=()
+LINK_FLAGS=()
+OBJECT_TARGET=
+
+SO="so"
+if [ "$(uname)" == "Darwin" ]; then
+	SO="dylib"
+fi
+
+
+OPT="-O3"
+
+phase="link"
+
+
+
+while [[ $# -gt 0 ]]
+do
+    case $1 in
+			-T)
+				export ALASKA_COMPILER_TRACE=yes
+				shift
+				;;
+			-g*)
+				shift
+				;;
+			-b|--baseline)
+				BASELINE="true"
+				shift
+				;;
+			-k|--keep-ir)
+				KEEP="true"
+				shift
+				;;
+
+			--alaska-no-hoist)
+				export ALASKA_NO_HOIST=true
+				shift
+				;;
+
+			-O*)
+				OPT="$1"
+				shift
+				;;
+
+			-o)
+				OUTFILE="$2"
+				shift
+				shift
+				COLLECT_CLANG_ARGS+=("-o $OUTFILE")
+				;;
+			-c)
+				phase="compile"
+				shift
+				;;
+
+			--alaska-*)
+				OPT_ARGS+=("$1")
+				shift
+				;;
+			-l*|-L*)
+				COLLECT_CLANG_ARGS+=("$1")
+				LINK_FLAGS+=("$1")
+				shift
+				;;
+			*)
+				COLLECT_CLANG_ARGS+=("$1")
+				shift
+				;;
+    esac
+done
+
+COLLECT_CLANG_ARGS+=("-Xclang -disable-O0-optnone -fno-slp-vectorize -fno-discard-value-names")
+COLLECT_CLANG_ARGS+=("-gdwarf-4 ")
+COLLECT_CLANG_ARGS+=("$OPT ")
+
+
+GCLANG="${ALASKA_GCLANG:=gclang}"
+CLANG="${ALASKA_CLANG:=clang}"
+
+if [ "$phase" = "compile" ]; then
+	$GCLANG -O1 -Xclang -disable-llvm-passes -Wno-unused-command-line-argument -I${PFX}/include -c ${COLLECT_CLANG_ARGS[@]} `alaska-config --cflags`
+	exit
+else
+
+	# If the program is being linked, link it as the user requests, then
+	# use get-bc to run our pass on it behind the scenes :)
+	$GCLANG -O1 -Xclang -disable-llvm-passes -Wno-unused-command-line-argument -I${PFX}/include ${COLLECT_CLANG_ARGS[@]} `alaska-config --cflags --ldflags`
+
+	get-bc $OUTFILE >/dev/null
+	TMPFILE=${OUTFILE}.bc
+
+  opt $OPT ${TMPFILE} -o ${TMPFILE}
+	if [ "$BASELINE" == "true" ]; then
+
+		mv $OUTFILE $OUTFILE.base_input
+		cp ${OUTFILE}.bc ${OUTFILE}.base.bc
+		BASETMPFILE=${OUTFILE}.base.bc
+		$PFX/bin/alaska-transform --baseline ${BASETMPFILE} ${OPT_ARGS[@]}
+
+    llc -O3 ${BASETMPFILE} --relocation-model=pic --filetype=obj -o ${BASETMPFILE}.o
+    $CLANG -gdwarf-4 ${BASETMPFILE}.o -o $OUTFILE.base ${LINK_FLAGS[@]} -ldl `alaska-config --ldflags --cflags`
+	fi
+
+	[ "$KEEP" == "true" ] && llvm-dis ${TMPFILE} -o ${OUTFILE}.in.ll
+	$PFX/bin/alaska-transform ${TMPFILE} ${OPT_ARGS[@]}
+	[ "$KEEP" == "true" ] && llvm-dis ${TMPFILE} -o ${OUTFILE}.out.ll
+
+	# Compile the bitcode to object code
+	llc -O3 ${TMPFILE} --relocation-model=pic --filetype=obj -o ${TMPFILE}.o
+	$CLANG -gdwarf-4 ${TMPFILE}.o -o $OUTFILE ${LINK_FLAGS[@]} -ldl `alaska-config --ldflags --cflags`
+	rm ${TMPFILE} ${TMPFILE}.o
+fi
+

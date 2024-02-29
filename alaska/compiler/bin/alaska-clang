@@ -1,0 +1,58 @@
+#!/usr/bin/bash
+
+# echo "warning: alaska-clang is experimental and likely won't work for you due to how argument escapes are handled"
+
+# The prefix directory
+PFX=$(realpath "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )/../")
+export PATH=$PFX/bin:$PATH
+export LD_LIBRARY_PATH=$PFX/lib:$LD_LIBRARY_PATH
+
+
+libc="$PFX"
+libc_inc="$PFX/include"
+libc_lib="$PFX/lib"
+thisdir="`cd "$(dirname "$0")"; pwd`"
+
+
+export ALASKA_BOOTSTRAP=1
+
+LINKER_ARGS=$($PFX/bin/alaska-config --ldflags)
+LINKER_ARGS=
+# prevent clang from running the linker (and erroring) on no input.
+sflags=
+eflags=
+
+for arg in $@; do
+	case "$arg" in
+		-l*) input=1 ;;
+		*) input= ;;
+	esac
+	if test "$input" ; then
+		sflags="-l-user-start"
+		eflags="-l-user-end"
+		break
+	fi
+
+	# parse args and adjust things as needed
+	case $arg in
+		-c) LINKER_ARGS="" ;;
+		*) ;;
+	esac
+done
+
+
+ARGS=
+# ARGS+="$($PFX/bin/alaska-config --cflags) "
+
+# load the clang plugin for the llvm pass
+ARGS+="-Xclang -fpass-plugin=$PFX/lib/Alaska.so "
+ARGS+="-fplugin=$PFX/lib/Alaska.so "
+ARGS+="-Wno-ignored-optimization-argument "
+ARGS+="-Wno-unused-command-line-argument "
+# ARGS+="-L-user-start $sflags $@ $eflags $LINKER_ARGS "
+# ARGS+="-L\"$libc_lib\" "
+# ARGS+="-L-user-end "
+# ARGS+="-Wno-unused-command-line-argument "
+
+# echo local/bin/clang $ARGS
+exec $PFX/bin/clang $ARGS $@

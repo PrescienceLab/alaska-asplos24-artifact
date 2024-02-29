@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import argparse
+import tempfile
+import shutil
+from pathlib import Path
+
+local = Path(os.path.realpath(os.path.dirname(__file__))).parent
+os.environ["PATH"] = f"{local}/bin:{os.environ['PATH']}"
+os.environ["LD_LIBRARY_PATH"] = f"{local}/lib:{os.environ['LD_LIBRARY_PATH']}"
+
+
+parser = argparse.ArgumentParser(prog='alaska-transform', description='Applies alaska transformations to an input bitcode')
+
+
+parser.add_argument('-o', dest='output', help='The destination file. Defaults to in-place.')
+parser.add_argument('-b', '--baseline', action='store_true', help='Apply baseline transformations, do not insert translations')
+parser.add_argument('input', help='The input .bc file to apply alaska transformations to.')
+
+parser.add_argument('--disable-tracking', action='store_true')
+parser.add_argument('--disable-hoisting', action='store_true')
+parser.add_argument('--disable-inlining', action='store_true')
+
+args = parser.parse_args()
+
+print(args)
+
+if args.output is None:
+  args.output = args.input
+
+
+bitcode = args.output
+
+def exec(cmd):
+  print('exec |', cmd)
+  res = os.system(cmd)
+  if res != 0:
+    exit()
+
+tempdir = tempfile.mkdtemp(prefix='alaska_')
+
+
+exec(f'opt --strip-debug {local}/lib/alaska_stub.bc -o {tempdir}/stub.bc')
+exec(f'opt --strip-debug {local}/lib/alaska_translate.bc -o {tempdir}/translate.bc')
+
+if not args.baseline:
+  exec(f'llvm-link {args.input} --internalize {tempdir}/stub.bc -o {bitcode}')
+else:
+  if args.input != bitcode:
+    shutil.copy(args.input, bitcode)
+
+def run_passes(passes):
+  for p in passes:
+    before = f'{tempdir}/before-{p}.bc'
+    after = f'{tempdir}/after-{p}.bc'
+    shutil.copy(bitcode, before)
+    exec(f'opt --load-pass-plugin={local}/lib/Alaska.so --passes={p} {before} -o {after}')
+    shutil.copy(after, bitcode)
+
+
+passes = []
+
+
+# exec(f'opt {bitcode} -o {bitcode} -O3')
+exec(f'opt {bitcode} -o {bitcode} -basic-aa -mergereturn --break-crit-edges -loop-simplify -lcssa -indvars -mem2reg -simplifycfg-sink-common=false -licm -instnamer')
+
+
+run_passes(['alaska-prepare'])
+
+# Now add the passes in the order they need to be (if we aren't compiling for baseline)
+if not args.baseline:
+  if not args.disable_hoisting:
+    run_passes(['alaska-replace', 'alaska-translate'])
+  else:
+    run_passes(['alaska-replace', 'alaska-translate-nohoist'])
+
+
+  # run_passes(['alaska-translate'])
+  exec(f'llvm-link {bitcode} --internalize {tempdir}/translate.bc -o {bitcode}')
+  passes.append('alaska-escape')
+
+  if not args.disable_tracking:
+    passes.append('alaska-tracking')
+
+  passes.append('alaska-lower')
+  if not args.disable_inlining:
+    passes.append('alaska-inline')
+
+
+run_passes(passes)
+exec(f'opt {bitcode} -o {bitcode} --mem2reg -lcssa -gvn --instnamer -sink -simplifycfg -dce')
+exec(f'llvm-dis {args.output}')
+
+
