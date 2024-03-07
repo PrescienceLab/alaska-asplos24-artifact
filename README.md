@@ -35,11 +35,11 @@ If you have a SPEC license, place the source code tarball in any of the followin
 If you do not have SPEC, the artifact will run correctly, but will simply not evaluate Alaska against SPEC.
 This will only affect figures 7 and 8.
 
-## Generating the artifact
+# Generating the artifact
 
 The benchmarks run in this artifact take many hours to complete, especially if you are benchmarking SPECCPU.
-As such, we recommend 
 The creation of the figures is done with one command:
+
 ```bash
 ./run_all.sh
 ```
@@ -58,7 +58,11 @@ Using these tools, it will then compile `alaska` into two configurations:
 
 These are compiled using the source code of alaska, which can be found in `alaska/`.
 
-## Using Alaska
+
+
+
+
+# Using Alaska
 
 Alaska is designed to be as easy as possible to use on existing codebases.
 If you source either of the enable scripts in `opt/`:
