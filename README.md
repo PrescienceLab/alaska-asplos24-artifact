@@ -94,7 +94,7 @@ The resulting binary will transparently utilize alaska, and in this case will au
 Below is a listing of the figures this artifact automatically generates.
 
 
-## Figure 7
+## Figure 7 - Evaluating Alaska's Overhead
 
 To produce this figure:
 ```bash
@@ -103,11 +103,15 @@ make results/figure7.pdf
 
 ![Figure 7](example-results/golden/figure7.png)
 
-This figure constitutes the main claim in our paper.
-It is an overhead measurement of alaska on four benchmark suites.
+This figure evaluates the overhead of Alaska's handles on a bevy of benchmarks across several benchmarks suites.
+The plot shows the overhead (% increase in runtime) for each benchmark.
+
+**NOTE:** You will not see SPEC2017 listed in your result if the `run_all.sh` script could not find the `SPEC2017.tar.gz` file.
+Also note, GCC and Perlbench in the SPEC suite are evaluated slightly different, as they violate strict aliasing requirements described in [section 3.2 of our paper](paper.pdf).
+As such, these benchmarks have "hoisting" disabled to ensure correctness.
 
 
-## Figure 8
+## Figure 8 - Evaluating Alaska's Optimizations
 
 To produce this figure:
 ```bash
@@ -118,6 +122,9 @@ make results/figure8.pdf
 
 This figure is an ablation study of alaska's feature set.
 It includes the same performance overheads from the SPEC suite in figure 7, but includes measurements where the hoisting optimization is disabled, as well as if we disable the pin tracking transformation.
+GCC and Perlbench are omitted from this test, as they have the hoisting optimization off already.
+
+**NOTE:** This figure will be empty (or not generated) if `SPEC2017.tar.gz` could not be found on your system.
 
 ## Figure 9
 
