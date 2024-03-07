@@ -154,7 +154,6 @@ Activedefrag and Mesh (prior work, shown in red) are able to reduce memory usage
 
 
 
-
 ## Figure 11
 
 
@@ -171,6 +170,8 @@ This test is very similar to that of figure 9, except instead of 100mb, Redis is
 
 **NOTE:** Mesh is not included in the artifact version of this figure, as it requires a patch to allocate more than 64GB of memory.
 It, however, has trouble defragmenting memory in this environment, as visible in the above figure.
+
+**NOTE:** This test is subject to a decent amount of randomness, and it is entirely possible the reduction in memory usage by defragmentation is more or less than the above figure.
 
 ## Figure 12
 
