@@ -79,6 +79,8 @@ fi
 
 buildstep "Figure 9" make results/figure9.pdf
 
+buildstep "Figure 10" make results/figure10.pdf
+
 if [[ "$generate_figure11" == "true" ]]; then
   buildstep "Figure 11" make results/figure11.pdf
 else

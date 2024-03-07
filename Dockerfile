@@ -10,23 +10,9 @@ RUN apt-get update && apt-get install -y \
   cmake \
   wget \
   libunwind-dev \
-  file \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+  file
+
+WORKDIR /artifact
 
 
-WORKDIR /src
-
-COPY . .
-
-# Make sure the virtual environment is created
-RUN make venv
-
-# Compile alaska into /src/opt
-RUN make compile
-
-# Create figure 7
-RUN make results/figure7.pdf
-
-FROM scratch as output
-COPY --from=build /src/results .
+ENTRYPOINT ["/usr/bin/bash"]

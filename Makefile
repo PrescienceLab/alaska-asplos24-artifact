@@ -92,6 +92,17 @@ results/figure9.pdf: venv
 
 
 
+results/figure10.pdf: venv | results/figure9.pdf
+	@echo "Generating data for figure 9"
+	@mkdir -p results
+	@. venv/bin/activate \
+		&& . opt/enable-alaska-anchorage \
+		&& ulimit -s unlimited \
+		&& python3 -m redis.config_sweep \
+		&& python3 plotgen/figure10.py
+
+
+
 # Create the results for redis (the large version)
 results/redis-alaska-large.csv: venv redis/bin/redis-server-alaska
 	@echo "Generating data for figure 11"
@@ -138,6 +149,9 @@ opt/enable-alaska-noservice: compile
 opt/enable-alaska-anchorage: compile
 
 in-docker: FORCE
-	docker build --progress=plain -o results .
+	docker build -t alaska-asplos24ae .
+	# 
+	# docker run -it --rm --mount type=bind,source=${PWD},target=/artifact alaska-asplos24ae
+	docker run -it --cpus 0.5 --rm --volume ${PWD}:/artifact:z alaska-asplos24ae
 
 FORCE:
