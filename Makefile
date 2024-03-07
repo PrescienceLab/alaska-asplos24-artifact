@@ -124,14 +124,6 @@ results/figure12.pdf: venv results/memcached-sweep.csv
 
 
 
-
-
-
-
-
-artifact: compile results/figure7.pdf results/figure9.pdf results/figure12.pdf
-
-
 compile:
 	@./build.sh
 
