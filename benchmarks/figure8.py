@@ -37,7 +37,6 @@ class AlaskaStage(wl.pipeline.Stage):
     self.extra_args = extra_args
 
   def run(self, input, output, benchmark):
-    print(f'alaska: compiling {output}', benchmark)
     aux_args = []
     env = os.environ.copy()
     if benchmark.suite.name == "SPEC2017":
@@ -59,7 +58,6 @@ class OptStage(waterline.pipeline.Stage):
     self.passes = passes
 
   def run(self, input, output, benchmark):
-    print('opt ', input, benchmark)
     space.shell('opt', *self.passes, input, '-o', output)
 
 

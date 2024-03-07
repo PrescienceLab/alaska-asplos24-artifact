@@ -52,7 +52,6 @@ class AlaskaStage(wl.pipeline.Stage):
 
 class AlaskaBaselineStage(wl.pipeline.Stage):
   def run(self, input, output, benchmark):
-    print(f'alaska: baseline compiling {output}')
     space.shell(f"alaska-transform", "--baseline", input, '-o', output)
 
 
@@ -61,7 +60,6 @@ class OptStage(waterline.pipeline.Stage):
     self.passes = passes
 
   def run(self, input, output, benchmark):
-    print('opt ', input, benchmark)
     space.shell('opt', *self.passes, input, '-o', output)
 
 
