@@ -41,9 +41,13 @@ The benchmarks run in this artifact take many hours to complete, especially if y
 As such, we recommend 
 The creation of the figures is done with one command:
 ```bash
-make artifact
+./run_all.sh
 ```
+This script will prompt you to answer a few questions, then generate all the figure PDFs that are requested.
 The results can be found in the folder, `results/`, and they include the raw CSV data, as well as the resultant figures.
+
+
+**NOTE**: We highly recommend running this command within a TMUX session, as the artifact can take up to a day to execute, especially with SPEC enabled.
 
 
 This will download the required version of LLVM, and the whole-program bitcode abstracton tool [`gllvm`](https://github.com/SRI-CSL/gllvm).
