@@ -117,7 +117,11 @@ make results/figure9.pdf
 
 ![Figure 9](example-results/golden/figure9.png)
 
-This figure presents alaska's ability to defragment memory on an unmodified copy of redis.
+
+This figure is what we believe to be the main contribution of Alaska.
+The intended takeaway is that Alaska is able to, through transparent object mobility in an unmanaged language, defragment memory in large real-world applications.
+In particular, we test Alaska+Anchorage on Redis, a well known open-source key value database which is known to suffer from fragmentation.
+
 The test is to insert keys into a redis database where it is configured to evict keys according to an LRU policy once memory usage goes above 50GB.
 This eviction is relatively random, which creates holes in the heap, leading to significant fragmentation.
 
