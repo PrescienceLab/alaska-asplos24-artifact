@@ -1,6 +1,17 @@
 # Alaska ASPLOS'24 Aritfact
 
-The Alaska paper can be found [here](paper.pdf).
+
+## What is Alaska?
+
+Managed languages such as Java or C# have long enjoyed the ability to relocate memory to compact and defragment their heap freely.
+Alaska is a new compiler and runtime which empowers *unmanaged* languages with the ability to relocate heap objects freely.
+It does this through a level of indirection known as *handles*.
+
+As a compiler, Alaska enables **unmodified** applications written in languages like C or C++ to utilize handles.
+It then boasts an extendable runtime interface, on top of which we implement *anchorage*.
+Anchorage is a custom memory allocator which, using handles, can defragment memory in these unmodified applications.
+
+For more info, the Alaska paper can be found in this repo [here](paper.pdf).
 
 ## System Requirements
 
