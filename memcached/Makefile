@@ -2,7 +2,7 @@
 .PHONY: redis
 
 src:
-	git clone git@github.com:memcached/memcached.git src --recursive
+	git clone https://github.com/memcached/memcached.git src --recursive
 	git -C src checkout 9723c0ea8ec1237b8364410ba982af8ea020a2b6
 
 libevent:
