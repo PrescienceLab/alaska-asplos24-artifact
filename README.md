@@ -35,10 +35,11 @@ sudo apt-get install -y \
   default-jre
 ```
 
-More specifically, we used the following software versions in our evaluation, but others will likely work:
+Additionally, we support evaluating the artifact in a docker container.
+Installation instructions for Ubuntu can be found [here](https://docs.docker.com/engine/install/ubuntu/).
 
-- **Python 3.10.12:** One of the tools requires [type annotations](https://docs.python.org/3/library/typing.html), which older versions of python 3 does not support.
-- 
+One of the tools requires python [type annotations](https://docs.python.org/3/library/typing.html), which older versions of python 3 does not support.
+The Ubuntu 22.04 repos provide Python 3.10, which is sufficient.
 
 Internet access is required to generate the artifact (to download benchmarks, etc).
 
