@@ -4,7 +4,9 @@
 buildstep() {
   NAME=$1
   shift
-  "$@" 2>&1 | sed $'s|^|\x1b[32m['"${NAME}"$']\x1b[39m |' || exit 1
+  printf "\e[32m${NAME}\e[0m\n"
+  # "$@" 2>&1 | sed $'s|^|\x1b[32m['"${NAME}"$']\x1b[39m |' || exit 1
+  "$@"
 }
 
 confirm_continue() {
@@ -23,6 +25,7 @@ if [ -z "$TMUX" ]; then
   # $TMUX is empty or not defined
   echo "We have detected you are not running in a tmux session. This is highly recommended,"
   echo "as running the entire artifact could take a day or more, if SPEC is enabled."
+  echo "Note: This may be a false positive if you are in a docker container"
   confirm_continue "Are you sure you want to continue without TMUX?"
 fi
 
@@ -61,11 +64,8 @@ echo $generate_figure11
 
 
 
-
-
-
-
-
+echo "Setting up virtual environment"
+make venv
 
 buildstep "compile" ./build.sh
 

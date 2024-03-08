@@ -3,9 +3,11 @@
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 buildstep() {
-    NAME=$1
-    shift
-    "$@" 2>&1 | sed $'s|^|\x1b[90m['"${NAME}"$']\x1b[39m |' || exit 1
+  NAME=$1
+  shift
+  printf "\e[32m${NAME}\e[0m\n"
+  # "$@" 2>&1 | sed $'s|^|\x1b[32m['"${NAME}"$']\x1b[39m |' || exit 1
+  "$@"
 }
 
 # Compile llvm, and gclang.
