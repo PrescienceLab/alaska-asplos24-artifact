@@ -68,7 +68,7 @@ if spec:
                   tar=spec,
                   # Disable perlbench and gcc
                   disabled=[600, 602],
-                  config="train") # TODO: ref plz
+                  config="ref")
 
 space.clear_pipelines()
 
@@ -87,4 +87,4 @@ pl.add_stage(AlaskaStage(['--disable-tracking']), name="Alaska")
 pl.set_linker(AlaskaLinker())
 space.add_pipeline(pl)
 
-res = space.run(runs=1, compile=True, run_name="figure8")
+res = space.run(runs=2, compile=True, run_name="figure8")

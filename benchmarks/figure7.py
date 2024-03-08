@@ -78,7 +78,7 @@ if spec:
   print('Found spec here:', spec)
   space.add_suite(wl.suites.SPEC2017,
                   tar=spec,
-                  config="train") # TODO: ref plz
+                  config="ref")
 
 space.clear_pipelines()
 
@@ -98,4 +98,4 @@ pl.set_linker(AlaskaLinker())
 space.add_pipeline(pl)
 
 
-res = space.run(runs=1, compile=True, run_name="figure7")
+res = space.run(runs=2, compile=True, run_name="figure7")
