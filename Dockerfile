@@ -5,12 +5,14 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   git \
   python3 python3-pip python3-virtualenv \
+  python2 \
   sudo \
   libxml2 \
   cmake \
   wget \
   libunwind-dev \
-  file
+  file \
+  default-jre
 
 WORKDIR /artifact
 
