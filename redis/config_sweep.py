@@ -65,8 +65,10 @@ def run_trials(binary, preload='', waiting_time=10, with_defrag=True, env={}, co
 os.makedirs('results/figure10/', exist_ok=True)
 
 for lb in np.arange(1.0, 2, 0.5):
+  for oh in np.arange(0.05, 0.2, 0.05):
     for aggro in np.arange(0.1, 1, 0.1):
         res = run_trials(ROOT_DIR / 'bin/redis-server-alaska', env={
             'FRAG_LB': lb,
-            'ANCH_AGGRO': aggro})
-        res.to_csv(f'results/figure10/alaska-lb{lb}-aggro{aggro}.csv', index=False)
+            'ANCH_AGGRO': aggro,
+            'ANCH_TARG_OVERHEAD': oh})
+        res.to_csv(f'results/figure10/alaska-lb{lb}-oh{oh}-aggro{aggro}.csv', index=False)
