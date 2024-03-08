@@ -12,7 +12,7 @@ libevent:
 
 
 MCD_FLAGS=CC=gclang 'CFLAGS=-O0 -gdwarf-4'
-src/memcached: | src
+src/memcached: | src bin/libevent.bc
 	cd src/ && ./autogen.sh ${MCD_FLAGS}
 	cd src/ && ./configure ${MCD_FLAGS}
 	cd src/ && make -j ${MCD_FLAGS}
@@ -20,7 +20,7 @@ src/memcached: | src
 
 bin/libevent.bc: | libevent
 	@mkdir -p bin
-	cd libevent/ && ./configure CC=gclang
+	cd libevent/ && ./configure CC=gclang --disable-openssl
 	cd libevent/ && make -j CC=gclang
 	get-bc -b -o bin/libevent.bc libevent/.libs/libevent.so
 
