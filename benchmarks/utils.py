@@ -1,5 +1,6 @@
 import os
 
+from pathlib import Path
 
 spec_locations = [
     "./SPEC2017.tar.gz",
@@ -11,5 +12,5 @@ def find_spec():
     for loc in spec_locations:
         loc = os.path.expanduser(loc)
         if os.path.isfile(loc):
-            return loc
+            return str(Path(loc).resolve())
     return None
