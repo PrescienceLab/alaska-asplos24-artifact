@@ -152,4 +152,8 @@ in-docker: FORCE
 	docker build -t alaska-asplos24ae .
 	docker run -it --rm --mount type=bind,source=${PWD},target=/artifact alaska-asplos24ae
 
+in-podman: FORCE
+	podman build -t alaska-asplos24ae .
+	podman run -it --rm --mount type=bind,source=${PWD},target=/artifact alaska-asplos24ae
+
 FORCE:
