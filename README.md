@@ -28,7 +28,10 @@ For more info, the Alaska paper can be found in this repo [here](paper.pdf).
 This artifact has been evaluated on a series of x86 machines, all running linux.
 While most distributions should work, we recommend Ubuntu 22.04, but we have also evaluated on various versions of RHEL.
 
-We find these dependencies sufficient:
+We support (and recommend) evaluating the artifact in a docker container.
+Installation instructions for Ubuntu can be found [here](https://docs.docker.com/engine/install/ubuntu/).
+
+If run outside of a docker container, we find these dependencies sufficient:
 
 ```bash
 sudo apt-get install -y \
@@ -45,8 +48,6 @@ sudo apt-get install -y \
   default-jre
 ```
 
-Additionally, we support evaluating the artifact in a docker container.
-Installation instructions for Ubuntu can be found [here](https://docs.docker.com/engine/install/ubuntu/).
 
 One of the tools requires python [type annotations](https://docs.python.org/3/library/typing.html), which older versions of python 3 does not support.
 The Ubuntu 22.04 repos provide Python 3.10, which is sufficient.
