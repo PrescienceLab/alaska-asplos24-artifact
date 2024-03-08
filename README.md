@@ -35,6 +35,11 @@ sudo apt-get install -y \
   default-jre
 ```
 
+More specifically, we used the following software versions in our evaluation, but others will likely work:
+
+- **Python 3.10.12:** One of the tools requires [type annotations](https://docs.python.org/3/library/typing.html), which older versions of python 3 does not support.
+- 
+
 Internet access is required to generate the artifact (to download benchmarks, etc).
 
 # The benchmarks
@@ -52,6 +57,18 @@ The artifact will automatically clone, build, and run these applications for you
 # Generating the artifact
 
 The benchmarks run in this artifact take many hours to complete, especially if you are benchmarking SPECCPU.
+We *HIGHLY* recommend running all of the commands in a tmux or screen session to avoid SSH connectivity problems interrupting the artifact.
+
+While not required, we support running the artifact in a docker container which has all dependencies pre-arranged with the following command:
+```bash
+make in-docker
+```
+
+This command will spawn an ephemeral docker container with the artifact's directory mounted as a bindmount.
+Running commands in this container will affect the host filesystem, and results will be visible in `./results/`.
+**NOTE:** Unfortunately, files created while running in a docker bind-mount will be owned by root.
+To delete these files (such as the results or compiled binaries), simply run `make distclean` from within the docker container context.
+
 The creation of the figures is done with one command:
 
 ```bash

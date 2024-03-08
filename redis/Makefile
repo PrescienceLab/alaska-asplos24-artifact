@@ -3,10 +3,10 @@
 
 
 src:
-	git clone git@github.com:redis/redis.git --recursive src
+	git clone https://github.com/redis/redis.git --recursive src
 
 src-ad:
-	git clone git@github.com:redis/redis.git --recursive src-ad
+	git clone https://github.com/redis/redis.git --recursive src-ad
 
 compilation:
 	$(MAKE) -C src USE_JEMALLOC=no CC=gclang OPTIMIZATION=-O0 "CFLAGS=-gdwarf-4 -Wno-strict-prototypes $(shell alaska-config --cflags)" "LDFLAGS=$(shell alaska-config --ldflags)"
@@ -52,9 +52,7 @@ mesh/bazel-build/src/libmesh.so: mesh
 redis: bin/redis-server-baseline bin/redis-server-alaska bin/redis-server-ad mesh/bazel-build/src/libmesh.so
 
 clean:
-	rm -rf bin mesh
-	$(MAKE) -C src distclean
-	$(MAKE) -C src-ad distclean
+	rm -rf bin mesh src src-ad
 
 
 FORCE:

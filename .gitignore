@@ -17,3 +17,7 @@ __pycache__/
 /memcached/libevent/config.log
 /redis/mesh
 /rss.trace
+
+
+# Make sure to avoid committihng SPEC. That would violate their license (oh no!)
+SPEC2017.tar.gz

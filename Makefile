@@ -150,8 +150,6 @@ opt/enable-alaska-anchorage: compile
 
 in-docker: FORCE
 	docker build -t alaska-asplos24ae .
-	# 
-	# docker run -it --rm --mount type=bind,source=${PWD},target=/artifact alaska-asplos24ae
-	docker run -it --cpus 0.5 --rm --volume ${PWD}:/artifact:z alaska-asplos24ae
+	docker run -it --rm --mount type=bind,source=${PWD},target=/artifact alaska-asplos24ae
 
 FORCE:
