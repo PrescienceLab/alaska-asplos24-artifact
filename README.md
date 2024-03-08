@@ -76,6 +76,8 @@ While not required, we support running the artifact in a docker container which 
 make in-docker
 ```
 
+Podman can also be used with `make in-podman`.
+
 This command will spawn an ephemeral docker container with the artifact's directory mounted as a bindmount.
 Running commands in this container will affect the host filesystem, and results will be visible in `./results/`.
 **NOTE:** Unfortunately, files created while running in a docker bind-mount will be owned by root.
