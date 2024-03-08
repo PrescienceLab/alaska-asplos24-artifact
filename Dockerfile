@@ -16,6 +16,4 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /artifact
 
-COPY . .
-
 ENTRYPOINT ["/usr/bin/bash"]

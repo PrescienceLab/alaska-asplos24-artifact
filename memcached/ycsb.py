@@ -103,7 +103,7 @@ for interval in range(50, 1100, 100):
       }
 
       print(env)
-      res = run_workload([ROOT_DIR / f'bin/memcached-{test}', '-t', str(threads)],
+      res = run_workload([ROOT_DIR / f'bin/memcached-{test}', '-u', 'nobody', '-t', str(threads)],
                          test,
                          'workloada',
                          trials = 1,
