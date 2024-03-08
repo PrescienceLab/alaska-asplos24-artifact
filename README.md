@@ -124,11 +124,6 @@ Below is a listing of the figures this artifact automatically generates.
 
 ## Figure 7 - Evaluating Alaska's Overhead
 
-To produce this figure:
-```bash
-make results/figure7.pdf
-```
-
 ![Figure 7](example-results/golden/figure7.png)
 
 This figure evaluates the overhead of Alaska's handles on a bevy of benchmarks across several benchmarks suites.
@@ -141,11 +136,6 @@ As such, these benchmarks have "hoisting" disabled to ensure correctness.
 
 ## Figure 8 - Evaluating Alaska's Optimizations
 
-To produce this figure:
-```bash
-make results/figure8.pdf
-```
-
 ![Figure 8](example-results/golden/figure8.png)
 
 This figure is an ablation study of alaska's feature set.
@@ -154,12 +144,7 @@ GCC and Perlbench are omitted from this test, as they have the hoisting optimiza
 
 **NOTE:** This figure will be empty (or not generated) if `SPEC2017.tar.gz` could not be found on your system.
 
-## Figure 9
-
-To produce this figure:
-```bash
-make results/figure9.pdf
-```
+## Figure 9 - Evaluating Anchorage's Defragmentation
 
 ![Figure 9](example-results/golden/figure9.png)
 
@@ -181,14 +166,19 @@ Redis boasts a built-in defragmentation policy, activedefrag, shown in yellow.
 Activedefrag and Mesh (prior work, shown in red) are able to reduce memory usage to a similar degree as Anchorage.
 
 
+## Figure 10 - Evaluating Anchorage's Control Algorithm
 
-## Figure 11
+
+![Figure 10](example-results/golden/figure10.png)
+
+This figure evaluates anchorage's control algorithm, which can be configured by the user with various aggressiveness, overheads, and target fragmentation parameters.
+The test sweeps many parameter configurations and plots them as the blue lines, indicating that Anchorage can be tuned to fit with whatever requirements are required.
+
+
+## Figure 11 - Evaluating Anchorage's Scalability
 
 
 To produce this figure:
-```bash
-make results/figure12.pdf
-```
 
 ![Figure 11](example-results/golden/figure11.png)
 
@@ -201,12 +191,7 @@ It, however, has trouble defragmenting memory in this environment, as visible in
 
 **NOTE:** This test is subject to a decent amount of randomness, and it is entirely possible the reduction in memory usage by defragmentation is more or less than the above figure.
 
-## Figure 12
-
-To produce this figure:
-```bash
-make results/figure12.pdf
-```
+## Figure 12 - Evaluating Alaska's effect on Multithreaded Workloads
 
 ![Figure 12](example-results/golden/figure12.png)
 
