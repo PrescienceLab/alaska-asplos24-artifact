@@ -14,7 +14,7 @@ from matplotlib import cm
 import matplotlib.pyplot as plt
 
 
-from .utils import find_spec
+from .utils import find_spec, get_spec_size
 
 # Construct the waterline workspace in the folder, `bench/`.
 # This is where all benchmark sourcefiles and results will be saved.
@@ -78,7 +78,7 @@ if spec:
   print('Found spec here:', spec)
   space.add_suite(wl.suites.SPEC2017,
                   tar=spec,
-                  config="ref")
+                  config=get_spec_size())
 
 space.clear_pipelines()
 

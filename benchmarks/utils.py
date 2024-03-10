@@ -2,6 +2,18 @@ import os
 
 from pathlib import Path
 
+def get_spec_size():
+  size = os.getenv("SPEC_SIZE")
+
+  if size:
+    if size in ['test', 'train', 'ref']:
+      return size
+    else:
+      print(f'{size} is not one of test,train,ref')
+
+  print("Using SPEC size 'ref'")
+  return 'ref'
+
 spec_locations = [
     "./SPEC2017.tar.gz",
     "~/SPEC2017.tar.gz",

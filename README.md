@@ -66,9 +66,11 @@ This will only affect figures 7 and 8.
 This artifact also uses two open source applications: `redis` and `memcached`.
 The artifact will automatically clone, build, and run these applications for you.
 
+
+
 # Generating the artifact
 
-The benchmarks run in this artifact take many hours to complete, especially if you are benchmarking SPECCPU.
+The benchmarks run in this artifact take many hours to complete, especially if you are benchmarking SPECCPU (choosing the spec `ref` size can take up to two days to execute).
 We *HIGHLY* recommend running all of the commands in a tmux or screen session to avoid SSH connectivity problems interrupting the artifact.
 
 While not required, we support running the artifact in a docker container which has all dependencies pre-arranged with the following command:
@@ -88,10 +90,26 @@ The creation of the figures is done with one command:
 ```bash
 ./run_all.sh
 ```
+
+
 This script will prompt you to answer a few questions, download dependencies, compile, and generate all the figure PDFs that are requested.
 The results can be found in the folder, `results/`, and they include the raw CSV data, as well as the resultant figures.
-While this is running, you can `tail -f bench/output.txt` to view some of the output when figure 7 and 8 are being generated.
-The other figures simply print their output to stderr.
+
+If SPEC is found, it runs at the `ref` size by default.
+With the default size, this artifact can take upwards of two days to run.
+**If you wish to run with a smaller size, adjust the above command as follows:**
+
+
+```bash
+# Run the smallest size (test)
+SPEC_SIZE=test ./run_all.sh
+# -- or --
+# Run the 'medium' size (train)
+SPEC_SIZE=train ./run_all.sh
+```
+
+We recommend choosing `train` as a *minimum* size, as `test` does not run for long enough in many benchmarks.
+
 
 
 **NOTE**: We highly recommend running this command within a TMUX session, as the artifact can take up to a day to execute, especially with SPEC enabled.

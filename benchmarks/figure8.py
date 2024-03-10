@@ -1,6 +1,7 @@
 # This script generates the new data required to plot figure 8.
 # The baseline, and the alaska measurements are gathered when plotting figure 7.
 
+
 import waterline as wl
 import waterline.suites
 import waterline.utils
@@ -16,8 +17,7 @@ from matplotlib.lines import Line2D
 from matplotlib import cm
 import matplotlib.pyplot as plt
 
-
-from .utils import find_spec
+from .utils import find_spec, get_spec_size
 
 # Construct the waterline workspace in the folder, `bench/`.
 # This is where all benchmark sourcefiles and results will be saved.
@@ -68,7 +68,7 @@ if spec:
                   tar=spec,
                   # Disable perlbench and gcc
                   disabled=[600, 602],
-                  config="ref")
+                  config=get_spec_size())
 
 space.clear_pipelines()
 
