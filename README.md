@@ -78,12 +78,13 @@ The artifact will automatically clone, build, and run these applications for you
 The benchmarks run in this artifact take many hours to complete, especially if you are benchmarking SPECCPU (choosing the spec `ref` size can take up to two days to execute).
 We *HIGHLY* recommend running all of the commands in a tmux or screen session to avoid SSH connectivity problems interrupting the artifact.
 
-While not required, we support running the artifact in a docker container which has all dependencies pre-arranged with the following command:
+While not required, we support running the artifact in a container which has all dependencies pre-arranged with the following command:
+
 ```bash
 make in-docker
+# -- or --
+make in-podman # We recommend this over docker
 ```
-
-Podman can also be used with `make in-podman`.
 
 This command will spawn an ephemeral docker container with the artifact's directory mounted as a bindmount.
 Running commands in this container will affect the host filesystem, and results will be visible in `./results/`.
