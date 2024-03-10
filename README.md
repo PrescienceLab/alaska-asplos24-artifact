@@ -28,10 +28,10 @@ For more info, the Alaska paper can be found in this repo [here](paper.pdf).
 This artifact has been evaluated on a series of x86 machines, all running linux.
 While most distributions should work, we recommend Ubuntu 22.04, but we have also evaluated on various versions of RHEL.
 
-We support (and recommend) evaluating the artifact in a docker container.
+We support (and recommend) evaluating the artifact in a docker/podman container.
 Installation instructions for Ubuntu can be found [here](https://docs.docker.com/engine/install/ubuntu/).
 
-If run outside of a docker container, we find these dependencies sufficient:
+If run outside of a docker/podman container, we find these dependencies sufficient:
 
 ```bash
 sudo apt install \
@@ -86,10 +86,13 @@ make in-docker
 make in-podman # We recommend this over docker
 ```
 
-This command will spawn an ephemeral docker container with the artifact's directory mounted as a bindmount.
+This command will spawn an ephemeral container with the artifact's directory mounted as a bindmount.
 Running commands in this container will affect the host filesystem, and results will be visible in `./results/`.
-**NOTE:** Unfortunately, files created while running in a docker bind-mount will be owned by root.
+
+
+**NOTE:** Unfortunately, if using docker, files created while running in a bind-mount will be owned by root.
 To delete these files (such as the results or compiled binaries), simply run `make distclean` from within the docker container context.
+As such, we recommend `podman` instead, which does not have this problem
 
 The creation of the figures is done with one command:
 
