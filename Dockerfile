@@ -12,7 +12,12 @@ RUN apt-get update && apt-get install -y \
   wget \
   libunwind-dev \
   file \
-  default-jre autotools-dev automake pkg-config openssl libevent-dev
+  default-jre \
+  autotools-dev \
+  automake \
+  pkg-config \
+  openssl \
+  libevent-dev
 
 WORKDIR /artifact
 

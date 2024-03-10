@@ -34,18 +34,23 @@ Installation instructions for Ubuntu can be found [here](https://docs.docker.com
 If run outside of a docker container, we find these dependencies sufficient:
 
 ```bash
-sudo apt-get install -y \
+sudo apt install \
   build-essential \
   git \
   python3 python3-pip python3-virtualenv \
+  python2 \
   sudo \
   libxml2 \
   cmake \
   wget \
-  zlib1g-dev \
   libunwind-dev \
   file \
-  default-jre
+  default-jre \
+  autotools-dev \
+  automake \
+  pkg-config \
+  openssl \
+  libevent-dev
 ```
 
 
