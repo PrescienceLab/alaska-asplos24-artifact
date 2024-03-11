@@ -89,7 +89,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2300.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -145,7 +145,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2800.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -173,7 +173,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2100.000
+cpu MHz		: 1492.501
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -313,7 +313,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -369,7 +369,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2500.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -509,7 +509,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 1800.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -537,7 +537,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -649,7 +649,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -705,7 +705,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -761,7 +761,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -873,7 +873,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -985,7 +985,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -1041,7 +1041,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -1097,7 +1097,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -1153,7 +1153,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -1321,7 +1321,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2500.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -1545,7 +1545,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2300.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -1601,7 +1601,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -1657,7 +1657,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -1769,7 +1769,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -1825,7 +1825,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 3600.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -1881,7 +1881,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2021,7 +2021,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2000.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 0
 siblings	: 44
@@ -2049,7 +2049,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -2105,7 +2105,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2301,7 +2301,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -2329,7 +2329,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2441,7 +2441,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2469,7 +2469,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2000.000
 cache size	: 30976 KB
 physical id	: 0
 siblings	: 44
@@ -2525,7 +2525,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -2553,7 +2553,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2609,7 +2609,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2800.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -2637,7 +2637,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -2777,7 +2777,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 3700.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2889,7 +2889,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 3100.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -2973,7 +2973,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2000.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -3001,7 +3001,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 3700.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -3337,7 +3337,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 3100.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -3393,7 +3393,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 3400.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -3449,7 +3449,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -3673,7 +3673,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -3757,7 +3757,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -3785,7 +3785,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -3841,7 +3841,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -4009,7 +4009,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2500.000
+cpu MHz		: 3700.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -4093,7 +4093,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -4121,7 +4121,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2397.705
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -4177,7 +4177,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -4233,7 +4233,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -4289,7 +4289,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 3700.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 1
 siblings	: 44
@@ -4345,7 +4345,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -4681,7 +4681,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -4765,7 +4765,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 2400.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -4793,7 +4793,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 3100.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
@@ -4877,7 +4877,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 1000.000
+cpu MHz		: 2400.000
 cache size	: 30976 KB
 physical id	: 2
 siblings	: 44
@@ -4905,7 +4905,7 @@ model		: 85
 model name	: Intel(R) Xeon(R) Gold 6238L CPU @ 2.10GHz
 stepping	: 7
 microcode	: 0x5003604
-cpu MHz		: 3100.000
+cpu MHz		: 1000.000
 cache size	: 30976 KB
 physical id	: 3
 siblings	: 44
