@@ -142,7 +142,7 @@ compile:
 
 distclean:
 	make -C redis clean
-	rm -rf opt build bench venv
+	rm -rf opt build bench venv results
 
 # If these files don't exist, we need to compile.
 opt/enable-alaska-noservice: compile
