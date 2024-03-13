@@ -93,7 +93,7 @@ results/figure9.pdf: venv
 
 
 results/figure10.pdf: venv | results/figure9.pdf
-	@echo "Generating data for figure 9"
+	@echo "Generating data for figure 10"
 	@mkdir -p results
 	@. venv/bin/activate \
 		&& . opt/enable-alaska-anchorage \
@@ -121,7 +121,7 @@ results/figure11.pdf: venv results/redis-alaska-large.csv
 
 
 results/memcached-sweep.csv: venv memcached/bin/memcached-alaska
-	@echo "Generating data for figure 9"
+	@echo "Generating data for figure 12"
 	@mkdir -p results
 	@. venv/bin/activate \
 	   && . opt/enable-alaska-anchorage \
