@@ -151,6 +151,9 @@ The resulting binary will transparently utilize alaska, and in this case will au
 
 Below is a listing of the figures this artifact automatically generates.
 
+**NOTE:** Because Alaska has a tendancy to insert memory operations into the critical path of some applications, expect performance overheads to be somewhat different than ours.
+Some applications are highly sensitive to changes in cache hierarchies, numa setups, and system/os noise.
+See the example results in the `example-results/` folder for a few examples of this (especially in the embench suite).
 
 ## Figure 7 - Evaluating Alaska's Overhead
 
@@ -160,8 +163,11 @@ This figure evaluates the overhead of Alaska's handles on a bevy of benchmarks a
 The plot shows the overhead (% increase in runtime) for each benchmark.
 
 **NOTE:** You will not see SPEC2017 listed in your result if the `run_all.sh` script could not find the `SPEC2017.tar.gz` file.
-Also note, GCC and Perlbench in the SPEC suite are evaluated slightly different, as they violate strict aliasing requirements described in [section 3.2 of our paper](paper.pdf).
+GCC and Perlbench in the SPEC suite are evaluated slightly different, as they violate strict aliasing requirements described in [section 3.2 of our paper](paper.pdf).
 As such, these benchmarks have "hoisting" disabled to ensure correctness.
+
+
+
 
 
 ## Figure 8 - Evaluating Alaska's Optimizations
