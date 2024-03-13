@@ -45,7 +45,7 @@ def run_trials(binary, preload='', waiting_time=10, with_defrag=True, env={}, co
     redis_cmd = subprocess.Popen([binary, ROOT_DIR / config], env=environ, shell=False)
     time.sleep(0.1) # Wait for the server to start
 
-    os.system(f'cat {ROOT_DIR / "fragmentation-small.redis"} | redis/src/src/redis-cli > /dev/null')
+    os.system(f'cat {ROOT_DIR / "fragmentation-small.redis"} | redis/src/src/redis-cli')
     print('sleeping for', waiting_time)
     time.sleep(waiting_time)
 
