@@ -72,10 +72,38 @@ for csv in glob.glob('results/figure10/alaska-*.csv'):
     load_and_plot(csv, c, linewidth=2, alpha=0.2)
 
 
+
+def find_dataframe_with_max_final_value(df_array):
+  if not df_array:
+    return None
+  # Get the last row's 'rss' value from each DataFrame
+  last_rss_values = [df.iloc[-1, :]['rss'] for df in df_array if 'rss' in df.columns]
+
+  # Check for empty list or missing 'rss' column
+  if not last_rss_values:
+    return None
+
+  # Find the index of the DataFrame with the maximum 'rss' value
+  ind = last_rss_values.index(max(last_rss_values))
+  print(ind)
+
+  df = df_array[ind]
+  return df
+
+
+
 all_df = pandas.concat(all)
 
+
+all_df['time_ms'] //= 10
+all_df['time_ms'] *= 10
+
+
+# HACK to plot the run w/ the highest final value on top
+maxs = find_dataframe_with_max_final_value(all)
+
+
 mins = all_df.groupby('time_ms')['rss'].min()
-maxs = all_df.groupby('time_ms')['rss'].max()
 mean = all_df.groupby('time_ms')['rss'].mean()
 x = mean.index.to_numpy(dtype=int)
 
@@ -84,9 +112,8 @@ c = next(color)
 c = next(color)
 c = next(color)
 c_control = c
+axs.plot(maxs['time_ms'], maxs['rss'], "--", color=c, zorder=4, alpha=1)
 axs.plot(x, mins, "--", color=c, zorder=4, alpha=1)
-axs.plot(x, maxs, "--", color=c, zorder=4, alpha=1)
-axs.fill_between(x, mins, maxs, interpolate=True, color=c, alpha=0.1, zorder=1) 
 
 
 MB = 1024 * 1024

@@ -102,6 +102,7 @@ static double get_knob(const char *name, double default_value) {
   if (const char *arg = getenv(name); arg != nullptr) {
     return atof(arg);
   }
+  printf("Returning default value for %s\n", name);
   return default_value;
 }
 
@@ -139,103 +140,6 @@ double anchorage::get_heap_frag(void) {
   return val;
 }
 
-void pad_barrier_control_overhead_target(void) {
-  float target_oh_lb = get_knob("ANCH_TARG_OVERHEAD_LB", 0.001);  // .01%  min overhead
-  float target_oh_ub = get_knob("ANCH_TARG_OVERHEAD_UB", 0.10);   //  10% max overhead
-  float target_frag_lb = get_knob("ANCH_TARG_FRAG_LB", 1.4);
-  float target_frag_ub = get_knob("ANCH_TARG_FRAG_UB", 2.0);
-  float target_frag_improve_min = get_knob("ANCH_TARG_FRAG_IMPROVE_MIN", 0.05);
-  float aimd_add = get_knob("ANCH_AIMD_ADD", 1);
-  float aimd_mul = get_knob("ANCH_AIMD_MUL", 0.5);
-
-  // set initial state to be "right on target"
-  float this_frag_start;
-  float this_frag_end;
-  float this_oh_start;
-  float this_cost;
-  float cost_since_last_pass = 0;
-
-  int did_pass = 0;
-  int hit_lb = 0;
-  int hit_min = 0;
-  float last_pass_start = 0;
-
-  // control variable
-  double ms_to_sleep = 100;  // 1s out of the gate.
-
-  printf("target overhead: [%f,%f]\n", target_oh_lb, target_oh_ub);
-  printf("target frag:     [%f,%f]\n", target_frag_lb, target_frag_ub);
-
-  do {
-    printf("sleeping for %f ms\n", ms_to_sleep);
-    usleep(ms_to_sleep * 1000);
-    auto start = alaska_timestamp();
-    this_frag_start = anchorage::get_heap_frag();
-    this_oh_start = cost_since_last_pass / (start - last_pass_start);
-
-    // long rss_bytes = alaska_translate_rss_kb() * 1024;
-    // printf("current frag = %f, rss = %fmb\n", this_frag_start, rss_bytes /
-    // 1024.0 / 1024.0);
-
-    // do a pass only if we are past the upper fragmentation limit, and our
-    // overhead is too low
-    if ((this_frag_start > target_frag_ub) && (this_oh_start < target_oh_lb)) {
-      printf(
-          "current frag of %f exceeds high water mark and have time - doing "
-          "pass\n",
-          this_frag_start);
-      // alaska::service::barrier(target_frag_lb);
-      alaska::service::barrier();
-      // estimate fragmentation at end of pass
-      // does not need to be this slow
-      this_frag_end = anchorage::get_heap_frag();
-      did_pass = 1;
-      hit_lb = this_frag_end < target_frag_lb;
-      hit_min = (this_frag_start - this_frag_end) > target_frag_improve_min;
-      last_pass_start = start;
-      cost_since_last_pass = 0;  // reset here, will be computed later
-                                 // long rss_bytes = alaska_translate_rss_kb() * 1024;
-      printf("pass complete - resulting frag is %f (%s) %fMB\n", this_frag_end,
-          hit_lb ? "hit" : "MISS", alaska_translate_rss_kb() / 1024.0);
-    } else {
-      this_frag_end = this_frag_start;
-      did_pass = 0;
-      hit_lb = 1;
-      hit_min = 1;
-    }
-    auto end = alaska_timestamp();
-    this_cost = (end - start);
-    cost_since_last_pass += this_cost;
-
-    // now update the control variable based on the regime we are in
-    if (did_pass) {
-      if (hit_lb) {
-        // normal behavior, do additive increase (slow down) to reduce overhead
-        ms_to_sleep += aimd_add;
-      } else {
-        // we missed hitting the fragmentation target
-        // it may be impossible for us to reach the defrag target, though
-        if (hit_min) {
-          // we did improve the situation a bit, so let's try more frequently
-          // multiplicative decrease (speed up)
-          ms_to_sleep *= aimd_mul;
-        } else {
-          // we did not improve things, keep time same
-          // ms_to_sleep = ms_to_sleep;
-        }
-      }
-    } else {
-      // we did not do a pass, which means we ran too soon,
-      // so additive increase (slow down)
-      ms_to_sleep += aimd_add;
-    }
-
-    if (ms_to_sleep < 10) {
-      ms_to_sleep = 10;
-    }
-
-  } while (1);
-}
 
 static void barrier_control_overhead_target(void) {
   enum State {
@@ -269,8 +173,13 @@ static void barrier_control_overhead_target(void) {
   if (frag_lb > frag_ub) {
     frag_ub = frag_lb + 0.20;
   }
+
+  printf("pid = %d\n", getpid());
   printf("target overhead: %f\n", target_oh);
   printf("frag bounds:    [%f, %f]\n", frag_lb, frag_ub);
+
+  // This was dropped at some point.
+  if (target_oh == 0.0) return;
 
   double ms_to_sleep = 1000;
   do {
