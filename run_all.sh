@@ -2,11 +2,16 @@
 
 
 buildstep() {
+  mkdir -p results
   NAME=$1
   shift
-  printf "\e[32m${NAME}\e[0m\n"
+  printf "Generating results for \e[32m${NAME}\e[0m\n"
+  printf "    console output will be saved to results/${NAME}.log\n"
+  printf "    Running..."
   # "$@" 2>&1 | sed $'s|^|\x1b[32m['"${NAME}"$']\x1b[39m |' || exit 1
-  "$@"
+  "$@" >results/${NAME}.log 2>&1
+
+  printf " DONE!\n"
 }
 
 confirm_continue() {
@@ -67,24 +72,24 @@ echo $generate_figure11
 echo "Setting up virtual environment"
 make venv
 
-buildstep "compile" ./build.sh
+./build.sh
 
-buildstep "Figure 7" make results/figure7.pdf
+"Figure 7" make results/figure7.pdf
 
 if [[ "$spec_location" != "" ]]; then
-  buildstep "Figure 8" make results/figure8.pdf
+  "Figure 8" make results/figure8.pdf
 else
   echo "Skipping figure 8, because SPEC is not found"
 fi
 
-buildstep "Figure 9" make results/figure9.pdf
+buildstep "figure9" make results/figure9.pdf
 
-buildstep "Figure 10" make results/figure10.pdf
+buildstep "figure10" make results/figure10.pdf
 
 if [[ "$generate_figure11" == "true" ]]; then
-  buildstep "Figure 11" make results/figure11.pdf
+  buildstep "figure11" make results/figure11.pdf
 else
   echo "Skipping Figure 11"
 fi
 
-buildstep "Figure 12" make results/figure12.pdf
+buildstep "figure12" make results/figure12.pdf
