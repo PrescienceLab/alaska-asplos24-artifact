@@ -103,6 +103,8 @@ The creation of the figures is done with one command:
 
 This script will prompt you to answer a few questions, download dependencies, compile, and generate all the figure PDFs that are requested.
 The results can be found in the folder, `results/`, and they include the raw CSV data, as well as the resultant figures.
+In addition to results, any log messages for each figure are saved in their associated log file.
+For example, when figure9 is being generated, `results/figure9.log` will contain both stdout and stderr.
 
 If SPEC is found, it runs at the `ref` size by default.
 With the default size, this artifact can take upwards of two days to run.
