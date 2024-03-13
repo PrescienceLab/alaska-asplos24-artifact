@@ -74,10 +74,10 @@ make venv
 
 ./build.sh
 
-"Figure 7" make results/figure7.pdf
+make results/figure7.pdf
 
 if [[ "$spec_location" != "" ]]; then
-  "Figure 8" make results/figure8.pdf
+  make results/figure8.pdf
 else
   echo "Skipping figure 8, because SPEC is not found"
 fi
